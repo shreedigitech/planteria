@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#061506">
+<title>Plantia — Premium Plants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:"DM Sans",sans-serif;background:#061506;color:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}button,input{font:inherit}button{cursor:pointer}
+body:before{content:"";position:fixed;inset:0;z-index:-2;opacity:.35;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:35px 35px}
+.container{width:min(1180px,92%);margin:auto}.section{padding:90px 0}
+.glass{background:rgba(31,61,31,.36);border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.btn{border:1px solid rgba(255,255,255,.16);padding:12px 20px;border-radius:30px;background:rgba(255,255,255,.07);color:#fff;transition:.3s}.btn:hover{transform:translateY(-3px);background:#b8df9f;color:#092009}.btn-primary{background:#b8df9f;color:#092009;font-weight:700}
+header{position:fixed;top:0;width:100%;z-index:1000;padding:18px 0;transition:.3s}header.scrolled{background:rgba(5,22,7,.78);backdrop-filter:blur(20px)}
+.nav{display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:700;display:flex;align-items:center;gap:8px}.logo-icon{width:32px;height:32px;display:grid;place-items:center;background:#b8df9f;color:#0b250c;border-radius:50% 50% 50% 5px;transform:rotate(-20deg)}.logo span{color:#b8df9f}
+.nav-links{display:flex;gap:30px;list-style:none}.nav-links a{font-size:14px;color:#d2ddd0}.nav-links a:hover{color:#b8df9f}.nav-actions{display:flex;gap:10px}.icon-btn{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#fff}.cart-button{position:relative}.cart-count{position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:#b8df9f;color:#10250e;font-size:10px;display:grid;place-items:center;font-weight:bold}.mobile-menu{display:none}
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:110px}.hero-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px}.hero-kicker{color:#a9d89a;letter-spacing:3px;font-size:13px;text-transform:uppercase;margin-bottom:18px}.hero h1{font-family:"Playfair Display";font-size:clamp(52px,7vw,90px);line-height:.95;margin-bottom:25px}.hero h1 em{color:#9dce8c;font-style:normal}.hero p{color:#aebdad;line-height:1.8;max-width:520px;margin-bottom:28px}.hero-buttons{display:flex;gap:10px;flex-wrap:wrap}.hero-visual{height:600px;position:relative}.hero-visual img{height:100%;width:100%;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6));animation:float 6s ease-in-out infinite}.hero-card{position:absolute;right:2%;bottom:7%;width:270px;padding:20px;border-radius:25px;animation:floatCard 5s ease-in-out infinite}.hero-card small{color:#a9c1a3}@keyframes float{50%{transform:translateY(-18px)}}@keyframes floatCard{50%{transform:translateY(-12px)}}
+.title{text-align:center;margin-bottom:45px}.title span{display:block;color:#a9d89a;font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}.title h2{font-family:"Playfair Display";font-size:clamp(35px,5vw,55px)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{border-radius:28px;padding:15px;transition:.35s}.card:hover{transform:translateY(-8px);border-color:rgba(184,223,159,.3)}.product-image{height:260px;border-radius:22px;overflow:hidden;background:rgba(0,0,0,.16);position:relative}.product-image img{height:100%;width:100%;object-fit:contain;transition:.5s}.card:hover img{transform:scale(1.08)}.product-info{padding:17px 5px 7px}.product-info small{color:#8fa58c}.product-info h3{margin:6px 0 12px}.bottom{display:flex;align-items:center;justify-content:space-between}.add{width:40px;height:40px;border:0;border-radius:50%;background:#b8df9f;color:#092009;font-size:21px}.wishlist{position:absolute;right:12px;top:12px;z-index:2;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12);color:#fff}.wishlist.active{color:#ff8c9c}
+.best{border-radius:38px;padding:50px;min-height:440px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden}.best img{width:100%;height:400px;object-fit:contain;filter:drop-shadow(0 30px 35px rgba(0,0,0,.6))}.best h2{font-family:"Playfair Display";font-size:45px;margin:12px 0 18px}.best p{color:#9eaf9c;line-height:1.8;max-width:470px}.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.review{border-radius:25px;padding:25px}.stars{color:#c8ebad;letter-spacing:2px;margin-bottom:15px}.reviewer{display:flex;gap:10px;align-items:center;margin-top:20px}.avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#31572e}
+.newsletter{text-align:center;max-width:700px;margin:auto}.newsletter p{color:#94a993;margin:15px 0 25px}.subscribe{display:flex;gap:10px;max-width:500px;margin:auto}.subscribe input{flex:1;padding:14px 20px;border-radius:30px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;outline:none}
+footer{padding:55px 0 25px;border-top:1px solid rgba(255,255,255,.08)}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:35px}.footer-col h4{margin-bottom:15px}.footer-col p,.footer-col a{display:block;color:#849783;margin:8px 0;font-size:14px}.copyright{text-align:center;border-top:1px solid rgba(255,255,255,.06);margin-top:35px;padding-top:20px;color:#667565;font-size:13px}
+.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,30px);opacity:0;z-index:5000;background:#b8df9f;color:#092009;padding:13px 20px;border-radius:30px;font-weight:700;transition:.3s}
+@media(max-width:850px){.nav-links{position:fixed;top:75px;left:4%;width:92%;padding:25px;background:rgba(7,25,8,.96);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:25px;flex-direction:column;transform:translateY(-15px);opacity:0;visibility:hidden;transition:.3s}.nav-links.open{transform:none;opacity:1;visibility:visible}.mobile-menu{display:grid}.hero-inner{grid-template-columns:1fr;text-align:center}.hero p{margin-left:auto;margin-right:auto}.hero-buttons{justify-content:center}.hero-visual{height:420px}.products,.reviews{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.best{grid-template-columns:1fr;text-align:center}.best p{margin:auto}.best img{height:320px}}
+@media(max-width:560px){.section{padding:70px 0}.hero h1{font-size:54px}.hero-visual{height:340px}.hero-card{width:230px;padding:15px}.products,.reviews{grid-template-columns:1fr 1fr;gap:10px}.product-image{height:190px}.product-info h3{font-size:14px}.product-info small{font-size:11px}.best{padding:25px}.best h2{font-size:35px}.subscribe{flex-direction:column}.footer-grid{grid-template-columns:1fr}.nav-actions .search{display:none}}
+</style>
+</head>
+<body>
+
+<header id="header">
+<div class="container nav">
+<a class="logo" href="/">🌿 Plant<span>ia</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#home">Home</a></li><li><a href="#plants">Plants</a></li><li><a href="#bestsellers">Best Sellers</a></li><li><a href="#reviews">Reviews</a></li><li><a href="/profile.html">My Profile</a></li>
+</ul>
+<div class="nav-actions">
+<a class="icon-btn" href="/profile.html" title="Profile">👤</a>
+<button class="icon-btn cart-button" id="cartButton">🛒<span class="cart-count" id="cartCount">0</span></button>
+<button class="icon-btn mobile-menu" id="menuButton">☰</button>
+</div>
+</div>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="container hero-inner">
+<div>
+<div class="hero-kicker">Bring Nature Home</div>
+<h1>Grow your own <em>green world.</em></h1>
+<p>Discover beautiful indoor and outdoor plants selected to make your home healthier, greener and more beautiful.</p>
+<div class="hero-buttons">
+<a href="#plants" class="btn btn-primary">Explore Plants →</a>
+<a href="/profile.html" class="btn">My Profile</a>
+</div>
+</div>
+<div class="hero-visual">
+<img src="https://images.unsplash.com/photo-1614594575929-bb6f2c6d4fca?auto=format&fit=crop&w=1000&q=85" alt="Plant">
+<div class="hero-card glass">
+<small>⭐ 4.9 / 5 Customer Rating</small>
+<h3 style="font-family:'Playfair Display';margin:8px 0">Monstera Plant</h3>
+<p style="font-size:13px;color:#9bac99">Fresh, healthy and ready to brighten your space.</p>
+<strong style="display:block;margin:12px 0">₹799</strong>
+<button class="btn btn-primary" onclick="addToCart('2')">Add to Cart</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="plants">
+<div class="container">
+<div class="title"><span>Shop Plants</span><h2>Top Selling</h2></div>
+<div class="products">
+<script>
+const catalog=[
+["1","Calathea Plant","Indoor Plant",599,"https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=700&q=85"],
+["2","Monstera Plant","Premium Indoor",799,"https://images.unsplash.com/photo-1614594575929-bb6f2c6d4fca?auto=format&fit=crop&w=700&q=85"],
+["3","Fiddle Leaf","Indoor Plant",699,"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=700&q=85"],
+["4","Snake Plant","Low Maintenance",399,"https://images.unsplash.com/photo-1593482892290-f54927ae2c6c?auto=format&fit=crop&w=700&q=85"],
+["5","Cactus","Succulent",299,"https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=700&q=85"],
+["6","Areca Palm","Outdoor Plant",699,"https://images.unsplash.com/photo-1604762524889-3e2fcc145683?auto=format&fit=crop&w=700&q=85"]
+];
+document.write(catalog.map(p=>`
+<div class="card glass">
+<div class="product-image">
+<button class="wishlist" onclick="toggleWish(this)">♡</button>
+<img src="${p[4]}" alt="${p[1]}">
+</div>
+<div class="product-info">
+<small>${p[2]}</small><h3>${p[1]}</h3>
+<div class="bottom"><strong>₹${p[3]}</strong><button class="add" onclick="addToCart('${p[0]}')">+</button></div>
+</div>
+</div>`).join(""));
+</script>
+</div>
+</div>
+</section>
+
+<section class="section" id="bestsellers">
+<div class="container">
+<div class="best glass">
+<img src="https://images.unsplash.com/photo-1614594575929-bb6f2c6d4fca?auto=format&fit=crop&w=1000&q=85" alt="Premium plant">
+<div><small style="color:#a8d39a;letter-spacing:2px">PREMIUM COLLECTION</small><h2>Bring the jungle inside.</h2><p>Our premium collection contains carefully selected statement plants designed for modern homes and offices.</p><strong style="display:block;margin:20px 0">Starting ₹799</strong><button class="btn btn-primary" onclick="addToCart('2')">Shop Premium</button></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="reviews">
+<div class="container">
+<div class="title"><span>Happy Customers</span><h2>Customer Reviews</h2></div>
+<div class="reviews">
+<div class="review glass"><div class="stars">★★★★★</div><p>"The plant arrived beautifully packed and very healthy."</p><div class="reviewer"><div class="avatar">A</div><strong>Akash</strong></div></div>
+<div class="review glass"><div class="stars">★★★★★</div><p>"Excellent quality and fast delivery. Packaging was great."</p><div class="reviewer"><div class="avatar">P</div><strong>Priya</strong></div></div>
+<div class="review glass"><div class="stars">★★★★★</div><p>"Beautiful plants at reasonable prices. Ordering again."</p><div class="reviewer"><div class="avatar">R</div><strong>Rahul</strong></div></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="newsletter">
+<div class="title"><span>Stay Green</span><h2>Get plant tips & offers</h2></div>
+<p>Subscribe for plant-care tips, new arrivals and discounts.</p>
+<form class="subscribe" onsubmit="subscribe(event)"><input type="email" required placeholder="Enter your email"><button class="btn btn-primary">Subscribe</button></form>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container footer-grid">
+<div><div class="logo">🌿 Plant<span>ia</span></div><p style="color:#849783;margin-top:15px">Beautiful plants for beautiful spaces.</p></div>
+<div class="footer-col"><h4>Shop</h4><a href="#plants">Indoor Plants</a><a href="#plants">Succulents</a><a href="#bestsellers">Best Sellers</a></div>
+<div class="footer-col"><h4>Account</h4><a href="/profile.html">My Profile</a><a href="/checkout.html">Checkout</a></div>
+<div class="footer-col"><h4>Help</h4><a href="#">Contact</a><a href="#">Privacy</a></div>
+</div>
+<div class="container copyright">© 2026 Plantia. All Rights Reserved.</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const catalogData={
+"1":{id:"1",name:"Calathea Plant",price:599,image:"https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=700&q=85"},
+"2":{id:"2",name:"Monstera Plant",price:799,image:"https://images.unsplash.com/photo-1614594575929-bb6f2c6d4fca?auto=format&fit=crop&w=700&q=85"},
+"3":{id:"3",name:"Fiddle Leaf",price:699,image:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=700&q=85"},
+"4":{id:"4",name:"Snake Plant",price:399,image:"https://images.unsplash.com/photo-1593482892290-f54927ae2c6c?auto=format&fit=crop&w=700&q=85"},
+"5":{id:"5",name:"Cactus",price:299,image:"https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=700&q=85"},
+"6":{id:"6",name:"Areca Palm",price:699,image:"https://images.unsplash.com/photo-1604762524889-3e2fcc145683?auto=format&fit=crop&w=700&q=85"}
+};
+function getCart(){return JSON.parse(localStorage.getItem("plantiaCart")||"[]")}
+function saveCart(c){localStorage.setItem("plantiaCart",JSON.stringify(c));updateCount()}
+function addToCart(id){
+ let c=getCart(), found=c.find(x=>x.id===id);
+ if(found)found.quantity++;
+ else c.push({...catalogData[id],quantity:1});
+ saveCart(c);toast(catalogData[id].name+" added to cart ✓");
+}
+function updateCount(){document.getElementById("cartCount").textContent=getCart().reduce((s,x)=>s+x.quantity,0)}
+function toggleWish(b){b.classList.toggle("active");b.textContent=b.classList.contains("active")?"♥":"♡"}
+function toast(t){const e=document.getElementById("toast");e.textContent=t;e.style.opacity=1;e.style.transform="translate(-50%,0)";clearTimeout(window.__t);window.__t=setTimeout(()=>{e.style.opacity=0;e.style.transform="translate(-50%,30px)"},2400)}
+document.getElementById("cartButton").onclick=()=>location.href="/checkout.html";
+document.getElementById("menuButton").onclick=()=>document.getElementById("navLinks").classList.toggle("open");
+window.addEventListener("scroll",()=>document.getElementById("header").classList.toggle("scrolled",scrollY>40));
+function subscribe(e){e.preventDefault();toast("Subscribed successfully ✓");e.target.reset()}
+updateCount();
+</script>
+</body>
+</html>

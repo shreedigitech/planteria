@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#061506">
+<title>Checkout — Plantia</title>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:"DM Sans";background:#061506;color:#fff;min-height:100vh;padding:30px 0}.container{width:min(1100px,92%);margin:auto}.glass{background:rgba(31,61,31,.38);border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.07);backdrop-filter:blur(18px)}a{color:#b8df9f;text-decoration:none}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.logo{font-size:22px;font-weight:700}.logo span{color:#b8df9f}.checkout{display:grid;grid-template-columns:1.3fr .8fr;gap:20px}.box{border-radius:28px;padding:25px}.steps{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}.step{padding:9px 14px;border-radius:20px;background:rgba(255,255,255,.06);color:#8da18b}.step.active{background:#b8df9f;color:#092009;font-weight:700}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;color:#9daf9b}.field input,.field select{padding:13px 15px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.18);color:#fff;outline:none}.summary-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}.summary-item img{width:60px;height:60px;object-fit:contain;background:#102610;border-radius:12px}.summary-item div{flex:1}.total{display:flex;justify-content:space-between;margin-top:20px;font-size:20px}.btn{border:0;padding:14px 20px;border-radius:30px;background:#b8df9f;color:#092009;font-weight:700;width:100%;margin-top:20px}.empty{text-align:center;padding:50px 20px;color:#81957f}.success{display:none;text-align:center;padding:45px}.success.show{display:block}.success .check{font-size:65px}.payment-note{color:#8fa18c;font-size:12px;line-height:1.6;margin-top:14px}@media(max-width:800px){.checkout{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.top{align-items:flex-start;gap:15px}.box{padding:18px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="top"><div class="logo">🌿 Plant<span>ia</span></div><a href="/">← Continue Shopping</a></div>
+<div id="checkoutApp">
+<div class="steps"><div class="step active">1 Cart & Address</div><div class="step">2 Razorpay Payment</div><div class="step">3 Confirmation</div></div>
+<div class="checkout">
+<section class="box glass">
+<h2 style="font-family:'Playfair Display';font-size:34px;margin-bottom:20px">Delivery Details</h2>
+<form id="addressForm">
+<div class="form-grid">
+<div class="field"><label>Full Name *</label><input id="name" required autocomplete="name"></div>
+<div class="field"><label>Mobile Number *</label><input id="phone" required pattern="[6-9][0-9]{9}" maxlength="10" autocomplete="tel"></div>
+<div class="field full"><label>Email *</label><input id="email" type="email" required autocomplete="email"></div>
+<div class="field full"><label>House / Flat / Street *</label><input id="address" required autocomplete="street-address"></div>
+<div class="field"><label>City *</label><input id="city" required autocomplete="address-level2"></div>
+<div class="field"><label>State *</label><input id="state" required autocomplete="address-level1" value="Maharashtra"></div>
+<div class="field"><label>PIN Code *</label><input id="pincode" required pattern="[0-9]{6}" maxlength="6" autocomplete="postal-code"></div>
+<div class="field"><label>Landmark</label><input id="landmark" autocomplete="off"></div>
+</div>
+<button class="btn" type="submit">Continue to Secure Payment →</button>
+<p class="payment-note">Your details are saved locally in this browser for the My Profile page. Razorpay handles the payment UI; your Razorpay secret is never sent to the browser.</p>
+</form>
+</section>
+<aside class="box glass">
+<h2 style="font-family:'Playfair Display';font-size:30px;margin-bottom:15px">Order Summary</h2>
+<div id="items"></div>
+<div class="total"><span>Total</span><strong id="total">₹0</strong></div>
+</aside>
+</div>
+</div>
+<div class="success box glass" id="success">
+<div class="check">✓</div>
+<h2 style="font-family:'Playfair Display';font-size:40px">Payment Successful</h2>
+<p id="successText" style="color:#9daf9b;margin-top:10px"></p>
+<a class="btn" style="display:inline-block;max-width:260px" href="/profile.html">View My Profile</a>
+</div>
+</div>
+<script>
+const catalog={
+"1":{name:"Calathea Plant",price:599,image:"https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=700&q=85"},
+"2":{name:"Monstera Plant",price:799,image:"https://images.unsplash.com/photo-1614594575929-bb6f2c6d4fca?auto=format&fit=crop&w=700&q=85"},
+"3":{name:"Fiddle Leaf",price:699,image:"https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=700&q=85"},
+"4":{name:"Snake Plant",price:399,image:"https://images.unsplash.com/photo-1593482892290-f54927ae2c6c?auto=format&fit=crop&w=700&q=85"},
+"5":{name:"Cactus",price:299,image:"https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=700&q=85"},
+"6":{name:"Areca Palm",price:699,image:"https://images.unsplash.com/photo-1604762524889-3e2fcc145683?auto=format&fit=crop&w=700&q=85"}};
+function getCart(){return JSON.parse(localStorage.getItem("plantiaCart")||"[]")}
+function money(n){return "₹"+Number(n).toLocaleString("en-IN")}
+function render(){
+const c=getCart(), box=document.getElementById("items");
+if(!c.length){box.innerHTML='<div class="empty">Your cart is empty.<br><br><a href="/">Shop Plants</a></div>';document.getElementById("total").textContent="₹0";return}
+let total=0;box.innerHTML=c.map(x=>{total+=x.price*x.quantity;return `<div class="summary-item"><img src="${x.image}" alt=""><div><strong>${x.name}</strong><div style="color:#8fa18c">Qty: ${x.quantity}</div></div><strong>${money(x.price*x.quantity)}</strong></div>`}).join("");
+document.getElementById("total").textContent=money(total);
+}
+function fillProfile(){
+const p=JSON.parse(localStorage.getItem("plantiaProfile")||"null");if(!p)return;
+["name","phone","email","address","city","state","pincode","landmark"].forEach(k=>{if(p[k])document.getElementById(k).value=p[k]});
+}
+async function createPayment(customer){
+const cart=getCart().map(x=>({id:x.id,quantity:x.quantity}));
+const r=await fetch("/api/create-order",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({items:cart,customer})});
+const data=await r.json();if(!r.ok)throw new Error(data.error||"Could not create order");
+return data;
+}
+document.getElementById("addressForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const customer={name:name.value.trim(),phone:phone.value.trim(),email:email.value.trim(),address:address.value.trim(),city:city.value.trim(),state:state.value.trim(),pincode:pincode.value.trim(),landmark:landmark.value.trim()};
+localStorage.setItem("plantiaProfile",JSON.stringify(customer));
+try{
+const order=await createPayment(customer);
+const options={
+key:order.keyId,amount:order.amount,currency:order.currency,name:"Plantia",description:"Plantia Store Order",order_id:order.orderId,
+prefill:{name:customer.name,email:customer.email,contact:"+91"+customer.phone},
+notes:{address:customer.address+", "+customer.city+", "+customer.state+" - "+customer.pincode},
+theme:{color:"#b8df9f"},
+handler:async function(response){
+const vr=await fetch("/api/verify-payment",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(response)});
+const result=await vr.json();
+if(!vr.ok)throw new Error(result.error||"Verification failed");
+const history=JSON.parse(localStorage.getItem("plantiaOrders")||"[]");
+history.unshift({orderId:result.orderId,paymentId:result.paymentId,amount:order.amount/100,customer,date:new Date().toISOString(),items:getCart()});
+localStorage.setItem("plantiaOrders",JSON.stringify(history));
+localStorage.removeItem("plantiaCart");
+document.getElementById("checkoutApp").style.display="none";
+document.getElementById("success").classList.add("show");
+document.getElementById("successText").textContent=`Order ${result.orderId} has been verified. Payment ID: ${result.paymentId}`;
+},
+modal:{ondismiss:()=>console.log("Razorpay checkout closed")}
+};
+const rzp=new Razorpay(options);
+rzp.on("payment.failed",response=>alert(response.error?.description||"Payment failed. Please try again."));
+rzp.open();
+}catch(err){alert(err.message)}
+});
+render();fillProfile();
+</script>
+</body>
+</html>
