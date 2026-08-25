@@ -1,0 +1,3256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FreshVeggies | Farm Fresh Vegetables at Your Door</title>
+
+<meta name="description"
+content="Fresh organic vegetables delivered straight from local farms to your doorstep every morning.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT / BRAND
+========================================================= */
+
+:root{
+    --green-dark:#176B3A;
+    --green:#2E8B57;
+    --green-light:#8BC34A;
+    --green-pale:#EAF7E8;
+
+    --cream:#FFFDF4;
+    --white:#FFFFFF;
+
+    --brown:#795548;
+    --orange:#FF9800;
+    --red:#E53935;
+
+    --text:#17351F;
+    --muted:#718078;
+
+    --shadow:0 15px 45px rgba(23,107,58,.12);
+    --radius:22px;
+
+    --transition:.3s cubic-bezier(.2,.8,.2,1);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:var(--cream);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* =========================================================
+   UTILITY
+========================================================= */
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+.section{
+    padding:90px 0;
+}
+
+.section-heading{
+    text-align:center;
+    max-width:720px;
+    margin:0 auto 45px;
+}
+
+.section-heading span{
+    color:var(--green);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:13px;
+}
+
+.section-heading h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(32px,5vw,52px);
+    margin:10px 0;
+}
+
+.section-heading p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.btn{
+    border:none;
+    padding:14px 22px;
+    border-radius:999px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    gap:9px;
+    font-weight:700;
+    transition:var(--transition);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.btn-primary{
+    background:var(--green-dark);
+    color:white;
+    box-shadow:0 10px 25px rgba(23,107,58,.25);
+}
+
+.btn-primary:hover{
+    background:#0f522c;
+}
+
+.btn-light{
+    background:white;
+    color:var(--green-dark);
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:7px 12px;
+    border-radius:999px;
+    background:var(--green-pale);
+    color:var(--green-dark);
+    font-size:12px;
+    font-weight:700;
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+    background:var(--green-dark);
+    color:white;
+    text-align:center;
+    padding:9px 15px;
+    font-size:13px;
+    position:relative;
+    z-index:1001;
+}
+
+.topbar strong{
+    color:#D9FFB7;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,253,244,.9);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(23,107,58,.08);
+}
+
+.nav-inner{
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+    font-size:22px;
+    color:var(--green-dark);
+}
+
+.logo-icon{
+    width:43px;
+    height:43px;
+    display:grid;
+    place-items:center;
+    background:var(--green-dark);
+    color:white;
+    border-radius:50% 50% 50% 10px;
+    transform:rotate(-8deg);
+    font-size:23px;
+}
+
+.logo small{
+    display:block;
+    font-size:9px;
+    letter-spacing:1.5px;
+    color:var(--brown);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.nav-links a{
+    position:relative;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:2px;
+    background:var(--green);
+    transition:var(--transition);
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.icon-btn{
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    position:relative;
+    transition:var(--transition);
+}
+
+.icon-btn:hover{
+    transform:translateY(-3px);
+}
+
+.cart-count{
+    position:absolute;
+    top:-4px;
+    right:-3px;
+    width:20px;
+    height:20px;
+    display:grid;
+    place-items:center;
+    background:var(--orange);
+    color:white;
+    font-size:10px;
+    border-radius:50%;
+    font-weight:800;
+}
+
+.menu-btn{
+    display:none;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 80% 20%,#DFF4C8 0,transparent 30%),
+        linear-gradient(135deg,#FFFDF4,#EFF8E9);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:#D8F0BE;
+    right:-150px;
+    top:-120px;
+    opacity:.5;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.hero-copy{
+    position:relative;
+    z-index:2;
+}
+
+.hero-copy .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#E4F5D8;
+    color:var(--green-dark);
+    border-radius:999px;
+    padding:9px 15px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(45px,6vw,76px);
+    line-height:1.03;
+    letter-spacing:-2px;
+}
+
+.hero h1 em{
+    color:var(--green);
+    font-style:normal;
+}
+
+.hero-copy p{
+    max-width:590px;
+    margin:24px 0;
+    color:var(--muted);
+    line-height:1.8;
+    font-size:17px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.hero-trust{
+    display:flex;
+    gap:22px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.hero-trust div{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    font-size:13px;
+    font-weight:600;
+}
+
+.hero-visual{
+    min-height:500px;
+    position:relative;
+    display:grid;
+    place-items:center;
+}
+
+.farm-circle{
+    width:min(450px,80vw);
+    height:min(450px,80vw);
+    border-radius:50%;
+    background:
+        linear-gradient(145deg,#A6D86E,#E8F7CF);
+    position:relative;
+    box-shadow:
+        0 30px 70px rgba(45,139,87,.22);
+}
+
+.farm-circle::after{
+    content:"";
+    position:absolute;
+    inset:28px;
+    border:2px dashed rgba(23,107,58,.25);
+    border-radius:50%;
+}
+
+.hero-vegetables{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    font-size:180px;
+    z-index:2;
+    animation:float 4s ease-in-out infinite;
+}
+
+.veggie{
+    position:absolute;
+    font-size:55px;
+    filter:drop-shadow(0 12px 8px rgba(0,0,0,.12));
+}
+
+.v1{top:45px;left:20px;animation:float 4s 0s infinite;}
+.v2{top:90px;right:10px;animation:float 5s .5s infinite;}
+.v3{bottom:70px;left:30px;animation:float 4.5s 1s infinite;}
+.v4{bottom:35px;right:45px;animation:float 5s 1.5s infinite;}
+.v5{top:50%;right:-20px;animation:float 4s 2s infinite;}
+
+.farm-label{
+    position:absolute;
+    bottom:35px;
+    left:-20px;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(15px);
+    padding:15px 20px;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    z-index:5;
+}
+
+.farm-label strong{
+    display:block;
+    color:var(--green-dark);
+}
+
+.farm-label span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features{
+    margin-top:-45px;
+    position:relative;
+    z-index:10;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    background:white;
+    border-radius:28px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+
+.feature{
+    padding:28px 20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    border-right:1px solid #edf0ec;
+}
+
+.feature:last-child{
+    border-right:none;
+}
+
+.feature-icon{
+    min-width:52px;
+    height:52px;
+    display:grid;
+    place-items:center;
+    background:var(--green-pale);
+    border-radius:16px;
+    font-size:25px;
+}
+
+.feature strong{
+    display:block;
+    font-size:14px;
+}
+
+.feature span{
+    display:block;
+    margin-top:4px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:16px;
+}
+
+.category{
+    border:none;
+    background:white;
+    border-radius:22px;
+    padding:20px 10px;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+    transition:var(--transition);
+}
+
+.category:hover,
+.category.active{
+    transform:translateY(-7px);
+    background:var(--green-dark);
+    color:white;
+}
+
+.category-icon{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.category strong{
+    font-size:13px;
+}
+
+/* =========================================================
+   SHOP
+========================================================= */
+
+.shop-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+}
+
+.search-box{
+    flex:1;
+    min-width:230px;
+    max-width:450px;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:15px 18px 15px 45px;
+    border:1px solid #e4e9e3;
+    border-radius:999px;
+    outline:none;
+    background:white;
+}
+
+.search-box span{
+    position:absolute;
+    left:18px;
+    top:14px;
+}
+
+select{
+    border:1px solid #e4e9e3;
+    background:white;
+    border-radius:999px;
+    padding:14px 18px;
+    outline:none;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.product{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 8px 30px rgba(0,0,0,.05);
+    transition:var(--transition);
+    position:relative;
+}
+
+.product:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(23,107,58,.15);
+}
+
+.product-image{
+    height:210px;
+    background:
+        radial-gradient(circle at 30% 30%,#F4FBD9,transparent 30%),
+        #EEF7E7;
+    display:grid;
+    place-items:center;
+    font-size:105px;
+    position:relative;
+}
+
+.product-badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:white;
+    color:var(--green-dark);
+    border-radius:999px;
+    padding:6px 10px;
+    font-size:10px;
+    font-weight:800;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.product-content{
+    padding:18px;
+}
+
+.product-title{
+    font-weight:800;
+    font-size:16px;
+}
+
+.product-meta{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:5px;
+}
+
+.price-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:16px;
+}
+
+.price strong{
+    color:var(--green-dark);
+    font-size:18px;
+}
+
+.price span{
+    color:#9ca59f;
+    font-size:11px;
+}
+
+.add-btn{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:var(--green-dark);
+    color:white;
+    font-size:22px;
+    transition:var(--transition);
+}
+
+.add-btn:hover{
+    transform:rotate(90deg) scale(1.08);
+}
+
+/* =========================================================
+   FARM STORY
+========================================================= */
+
+.farm-story{
+    background:#EFF8E8;
+}
+
+.story-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.story-image{
+    min-height:460px;
+    border-radius:35px;
+    background:
+        linear-gradient(145deg,#A5D96B,#DDF1BE);
+    display:grid;
+    place-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.story-field{
+    font-size:170px;
+    animation:float 5s infinite;
+}
+
+.story-stamp{
+    position:absolute;
+    bottom:25px;
+    right:25px;
+    background:white;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    font-size:12px;
+    font-weight:800;
+    color:var(--green-dark);
+    box-shadow:var(--shadow);
+}
+
+.story-copy h2{
+    font-family:"Playfair Display",serif;
+    font-size:48px;
+    line-height:1.1;
+    margin:12px 0 20px;
+}
+
+.story-copy p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.story-points{
+    margin-top:25px;
+    display:grid;
+    gap:14px;
+}
+
+.story-point{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    font-weight:600;
+}
+
+.story-point span{
+    width:34px;
+    height:34px;
+    display:grid;
+    place-items:center;
+    background:white;
+    border-radius:50%;
+}
+
+/* =========================================================
+   FARMERS
+========================================================= */
+
+.farmer-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.farmer{
+    background:white;
+    border-radius:26px;
+    padding:28px;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+    transition:var(--transition);
+}
+
+.farmer:hover{
+    transform:translateY(-8px);
+}
+
+.farmer-avatar{
+    width:95px;
+    height:95px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:var(--green-pale);
+    font-size:55px;
+}
+
+.farmer h3{
+    margin-bottom:5px;
+}
+
+.farmer p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.farmer-tag{
+    margin-top:15px;
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:999px;
+    background:#FFF3DF;
+    color:#A86600;
+    font-size:11px;
+    font-weight:700;
+}
+
+/* =========================================================
+   DELIVERY BANNER
+========================================================= */
+
+.delivery-banner{
+    background:var(--green-dark);
+    color:white;
+    border-radius:35px;
+    padding:55px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    overflow:hidden;
+    position:relative;
+}
+
+.delivery-banner::before{
+    content:"🥬 🍅 🥕 🥦";
+    position:absolute;
+    right:-10px;
+    bottom:-25px;
+    font-size:100px;
+    opacity:.08;
+}
+
+.delivery-banner h2{
+    font-family:"Playfair Display",serif;
+    font-size:40px;
+}
+
+.delivery-banner p{
+    margin-top:10px;
+    opacity:.8;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#0E3E23;
+    color:white;
+    padding:65px 0 25px;
+    margin-top:80px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:45px;
+}
+
+.footer-brand p{
+    margin-top:15px;
+    color:#B8CBBE;
+    line-height:1.7;
+    max-width:350px;
+}
+
+footer h4{
+    margin-bottom:18px;
+}
+
+footer a{
+    display:block;
+    color:#B8CBBE;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+footer a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    margin-top:40px;
+    padding-top:20px;
+    text-align:center;
+    color:#9CB1A3;
+    font-size:12px;
+}
+
+/* =========================================================
+   CART
+========================================================= */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(4px);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:1999;
+}
+
+.overlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.cart-panel{
+    position:fixed;
+    right:-500px;
+    top:0;
+    width:min(460px,100%);
+    height:100vh;
+    background:#FFFDF8;
+    z-index:2000;
+    transition:.4s cubic-bezier(.2,.8,.2,1);
+    display:flex;
+    flex-direction:column;
+    box-shadow:-20px 0 50px rgba(0,0,0,.15);
+}
+
+.cart-panel.show{
+    right:0;
+}
+
+.cart-head{
+    padding:22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #e7ece7;
+}
+
+.close-btn{
+    border:none;
+    background:#edf5eb;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+}
+
+.cart-items{
+    flex:1;
+    overflow:auto;
+    padding:20px;
+}
+
+.empty-cart{
+    text-align:center;
+    padding:80px 20px;
+    color:var(--muted);
+}
+
+.cart-item{
+    display:grid;
+    grid-template-columns:65px 1fr auto;
+    gap:12px;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #e8ece8;
+}
+
+.cart-item-image{
+    width:65px;
+    height:65px;
+    background:var(--green-pale);
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    font-size:34px;
+}
+
+.cart-item h4{
+    font-size:14px;
+}
+
+.cart-item small{
+    color:var(--muted);
+}
+
+.qty{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:7px;
+}
+
+.qty button{
+    width:25px;
+    height:25px;
+    border:none;
+    border-radius:50%;
+    background:#e6f3e2;
+    color:var(--green-dark);
+}
+
+.remove{
+    border:none;
+    background:none;
+    color:var(--red);
+    font-size:12px;
+    margin-top:5px;
+}
+
+.cart-summary{
+    padding:22px;
+    background:white;
+    border-top:1px solid #e7ece7;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+.summary-total{
+    font-size:20px;
+    font-weight:800;
+    padding-top:12px;
+    border-top:1px dashed #ddd;
+    margin-top:12px;
+}
+
+.checkout-btn{
+    width:100%;
+    margin-top:18px;
+}
+
+/* =========================================================
+   CHECKOUT MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    display:grid;
+    place-items:center;
+    padding:20px;
+    background:rgba(0,0,0,.5);
+    backdrop-filter:blur(8px);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:3000;
+}
+
+.modal.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.modal-card{
+    width:min(650px,100%);
+    max-height:90vh;
+    overflow:auto;
+    background:#FFFDF8;
+    border-radius:28px;
+    padding:30px;
+    box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
+
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    border:1px solid #dfe7de;
+    border-radius:14px;
+    padding:13px 14px;
+    background:white;
+    outline:none;
+}
+
+.form-group textarea{
+    min-height:85px;
+    resize:vertical;
+}
+
+.payment-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:10px 0 20px;
+}
+
+.payment-option{
+    border:2px solid #e3e9e2;
+    border-radius:16px;
+    padding:15px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.payment-option.selected{
+    border-color:var(--green);
+    background:var(--green-pale);
+}
+
+.payment-option input{
+    accent-color:var(--green-dark);
+}
+
+.payment-note{
+    padding:12px 15px;
+    background:#FFF1D8;
+    color:#875800;
+    border-radius:13px;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.success{
+    text-align:center;
+    padding:30px 10px;
+}
+
+.success-icon{
+    width:90px;
+    height:90px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:#DDF4D8;
+    display:grid;
+    place-items:center;
+    font-size:45px;
+}
+
+.success h2{
+    font-family:"Playfair Display",serif;
+    font-size:38px;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#123E24;
+    color:white;
+    padding:14px 18px;
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    transform:translateY(120px);
+    opacity:0;
+    transition:.35s;
+    z-index:5000;
+    max-width:320px;
+    font-size:13px;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0) rotate(0);
+    }
+    50%{
+        transform:translateY(-15px) rotate(3deg);
+    }
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:.8s;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+    .product-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .feature-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .feature:nth-child(2){
+        border-right:none;
+    }
+
+    .feature:nth-child(-n+2){
+        border-bottom:1px solid #edf0ec;
+    }
+
+    .hero-grid,
+    .story-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding:70px 0;
+    }
+
+    .hero-visual{
+        min-height:450px;
+    }
+
+    .farmer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:750px){
+
+    .nav-links{
+        position:fixed;
+        top:76px;
+        left:0;
+        right:0;
+        background:#FFFDF4;
+        padding:25px;
+        display:none;
+        flex-direction:column;
+        box-shadow:0 15px 30px rgba(0,0,0,.08);
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-actions .btn{
+        display:none;
+    }
+
+    .hero h1{
+        letter-spacing:-1px;
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        border-right:none;
+        border-bottom:1px solid #edf0ec;
+    }
+
+    .feature:last-child{
+        border-bottom:none;
+    }
+
+    .product-grid{
+        grid-template-columns:1fr 1fr;
+        gap:13px;
+    }
+
+    .product-image{
+        height:170px;
+        font-size:80px;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(3,1fr);
+        gap:10px;
+    }
+
+    .category{
+        padding:15px 5px;
+    }
+
+    .category-icon{
+        font-size:30px;
+    }
+
+    .story-copy h2{
+        font-size:38px;
+    }
+
+    .delivery-banner{
+        padding:35px 25px;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .delivery-banner h2{
+        font-size:32px;
+    }
+
+    .farmer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+}
+
+@media(max-width:480px){
+
+    .container{
+        width:94%;
+    }
+
+    .section{
+        padding:65px 0;
+    }
+
+    .hero{
+        min-height:auto;
+    }
+
+    .hero-visual{
+        min-height:360px;
+    }
+
+    .farm-circle{
+        width:320px;
+        height:320px;
+    }
+
+    .hero-vegetables{
+        font-size:125px;
+    }
+
+    .veggie{
+        font-size:38px;
+    }
+
+    .product-content{
+        padding:13px;
+    }
+
+    .product-title{
+        font-size:14px;
+    }
+
+    .price strong{
+        font-size:15px;
+    }
+
+    .shop-toolbar{
+        align-items:stretch;
+        flex-direction:column;
+    }
+
+    .search-box{
+        max-width:none;
+    }
+
+    select{
+        width:100%;
+    }
+
+    .modal-card{
+        padding:20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
+<div class="topbar">
+    🌱 <strong>Farm Fresh Every Morning</strong>
+    • Order anytime • No quantity limit • Direct from local farms
+</div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="navbar">
+
+<div class="container nav-inner">
+
+<a href="#" class="logo">
+    <div class="logo-icon">🌿</div>
+    <div>
+        FreshVeggies
+        <small>FARM → HOME</small>
+    </div>
+</a>
+
+<nav class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#categories">Categories</a>
+    <a href="#farm">Our Farm</a>
+    <a href="#farmers">Farmers</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="nav-actions">
+
+<button class="icon-btn" onclick="openCart()" aria-label="Cart">
+    🛒
+    <span class="cart-count" id="cartCount">0</span>
+</button>
+
+<button class="btn btn-primary" onclick="openCart()">
+    View Cart
+</button>
+
+<button class="icon-btn menu-btn" onclick="toggleMenu()">
+    ☰
+</button>
+
+</div>
+
+</div>
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+<div class="hero-copy reveal">
+
+<div class="eyebrow">
+    🌱 FARM DIRECT • DAILY FRESH
+</div>
+
+<h1>
+    Fresh from the
+    <em>farm</em> to
+    your kitchen.
+</h1>
+
+<p>
+    Order freshly harvested vegetables anytime.
+    We bring farm-fresh produce straight from local
+    fields to your doorstep — with early morning delivery
+    and honest prices.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#shop" class="btn btn-primary">
+    🛒 Shop Fresh Vegetables
+</a>
+
+<a href="#farm" class="btn btn-light">
+    🌾 Meet Our Farmers
+</a>
+
+</div>
+
+<div class="hero-trust">
+
+<div>✓ Farm Direct</div>
+<div>✓ Fresh Harvest</div>
+<div>✓ Fair Prices</div>
+<div>✓ Early Morning Delivery</div>
+
+</div>
+
+</div>
+
+
+<div class="hero-visual reveal">
+
+<div class="farm-circle">
+
+<div class="hero-vegetables">
+    🥬
+</div>
+
+<div class="veggie v1">🍅</div>
+<div class="veggie v2">🥕</div>
+<div class="veggie v3">🌶️</div>
+<div class="veggie v4">🥦</div>
+<div class="veggie v5">🥔</div>
+
+</div>
+
+<div class="farm-label">
+    <strong>🌱 Harvested Today</strong>
+    <span>Delivered fresh to your home</span>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section class="features">
+
+<div class="container">
+
+<div class="feature-grid">
+
+<div class="feature">
+    <div class="feature-icon">🌱</div>
+    <div>
+        <strong>Farm Fresh</strong>
+        <span>Freshly harvested produce</span>
+    </div>
+</div>
+
+<div class="feature">
+    <div class="feature-icon">🌅</div>
+    <div>
+        <strong>Morning Delivery</strong>
+        <span>Fresh vegetables before breakfast</span>
+    </div>
+</div>
+
+<div class="feature">
+    <div class="feature-icon">💰</div>
+    <div>
+        <strong>Fair Prices</strong>
+        <span>Less middleman cost</span>
+    </div>
+</div>
+
+<div class="feature">
+    <div class="feature-icon">🚚</div>
+    <div>
+        <strong>Doorstep Delivery</strong>
+        <span>Delivered to your home</span>
+    </div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- =====================================================
+     CATEGORIES
+===================================================== -->
+
+<section class="section" id="categories">
+
+<div class="container">
+
+<div class="section-heading reveal">
+    <span>Fresh Picks</span>
+    <h2>Shop by category</h2>
+    <p>
+        Pick what your kitchen needs today.
+        Every product is selected for freshness and quality.
+    </p>
+</div>
+
+<div class="category-grid">
+
+<button class="category active" onclick="filterCategory('All',this)">
+    <div class="category-icon">🥬</div>
+    <strong>All Vegetables</strong>
+</button>
+
+<button class="category" onclick="filterCategory('Leafy',this)">
+    <div class="category-icon">🌿</div>
+    <strong>Leafy Greens</strong>
+</button>
+
+<button class="category" onclick="filterCategory('Root',this)">
+    <div class="category-icon">🥕</div>
+    <strong>Root Vegetables</strong>
+</button>
+
+<button class="category" onclick="filterCategory('Fruit',this)">
+    <div class="category-icon">🍅</div>
+    <strong>Fresh Produce</strong>
+</button>
+
+<button class="category" onclick="filterCategory('Exotic',this)">
+    <div class="category-icon">🥦</div>
+    <strong>Special Picks</strong>
+</button>
+
+<button class="category" onclick="filterCategory('Herbs',this)">
+    <div class="category-icon">🌱</div>
+    <strong>Herbs</strong>
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- =====================================================
+     SHOP
+===================================================== -->
+
+<section class="section" id="shop" style="padding-top:20px;">
+
+<div class="container">
+
+<div class="section-heading reveal">
+    <span>Daily Harvest</span>
+    <h2>Fresh vegetables</h2>
+    <p>
+        Choose your vegetables, select the quantity you need
+        and add them to your basket.
+    </p>
+</div>
+
+<div class="shop-toolbar">
+
+<div class="search-box">
+    <span>🔎</span>
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search vegetables..."
+        oninput="renderProducts()">
+</div>
+
+<select id="sortSelect" onchange="renderProducts()">
+    <option value="default">Sort: Recommended</option>
+    <option value="low">Price: Low to High</option>
+    <option value="high">Price: High to Low</option>
+    <option value="name">Name</option>
+</select>
+
+</div>
+
+<div class="product-grid" id="productGrid"></div>
+
+</div>
+</section>
+
+
+<!-- =====================================================
+     FARM STORY
+===================================================== -->
+
+<section class="section farm-story" id="farm">
+
+<div class="container story-grid">
+
+<div class="story-image reveal">
+
+<div class="story-field">
+    🌾🥬
+</div>
+
+<div class="story-stamp">
+    FARM<br>
+    DIRECT<br>
+    ✓ FRESH
+</div>
+
+</div>
+
+<div class="story-copy reveal">
+
+<span class="badge">🌱 Our Farm Promise</span>
+
+<h2>
+    We believe vegetables
+    should travel less.
+</h2>
+
+<p>
+    FreshVeggies connects customers directly with
+    local growers. Vegetables are harvested close to
+    delivery time and move from the field toward your
+    kitchen with fewer unnecessary steps.
+</p>
+
+<div class="story-points">
+
+<div class="story-point">
+    <span>🌱</span>
+    Harvested close to delivery
+</div>
+
+<div class="story-point">
+    <span>🚜</span>
+    Sourced from trusted growers
+</div>
+
+<div class="story-point">
+    <span>🧺</span>
+    Carefully sorted before delivery
+</div>
+
+<div class="story-point">
+    <span>🏠</span>
+    Delivered directly to your doorstep
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- =====================================================
+     FARMERS
+===================================================== -->
+
+<section class="section" id="farmers">
+
+<div class="container">
+
+<div class="section-heading reveal">
+    <span>Know Your Farmer</span>
+    <h2>The people behind your vegetables</h2>
+    <p>
+        Building trust by showing where your food comes from.
+    </p>
+</div>
+
+<div class="farmer-grid">
+
+<div class="farmer reveal">
+
+<div class="farmer-avatar">👨‍🌾</div>
+
+<h3>Ramesh Patil</h3>
+
+<p>
+    Seasonal vegetables • Local farm
+</p>
+
+<div class="farmer-tag">
+    🌱 Trusted Farm Partner
+</div>
+
+</div>
+
+<div class="farmer reveal">
+
+<div class="farmer-avatar">👩‍🌾</div>
+
+<h3>Sunita Deshmukh</h3>
+
+<p>
+    Leafy greens • Family farming
+</p>
+
+<div class="farmer-tag">
+    🌿 Fresh Harvest Partner
+</div>
+
+</div>
+
+<div class="farmer reveal">
+
+<div class="farmer-avatar">👨‍🌾</div>
+
+<h3>Mahesh Jadhav</h3>
+
+<p>
+    Root vegetables • Local produce
+</p>
+
+<div class="farmer-tag">
+    🚜 Farm Direct Partner
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- =====================================================
+     DELIVERY
+===================================================== -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="delivery-banner reveal">
+
+<div>
+    <span class="badge">🌅 Tomorrow Morning</span>
+
+    <h2>Order tonight.<br>
+    Wake up to fresh vegetables.</h2>
+
+    <p>
+        Order anytime. We prepare your fresh produce
+        for early morning delivery.
+    </p>
+</div>
+
+<a href="#shop" class="btn btn-light">
+    Shop Now →
+</a>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer id="contact">
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div class="footer-brand">
+
+<a href="#" class="logo" style="color:white;">
+    <div class="logo-icon">🌿</div>
+    <div>
+        FreshVeggies
+        <small style="color:#AFC3B5;">FARM → HOME</small>
+    </div>
+</a>
+
+<p>
+    Fresh vegetables from trusted local farms,
+    delivered conveniently to your doorstep.
+</p>
+
+</div>
+
+<div>
+    <h4>Shop</h4>
+    <a href="#shop">Vegetables</a>
+    <a href="#categories">Categories</a>
+    <a href="#shop">Daily Fresh</a>
+    <a href="#shop">Farm Picks</a>
+</div>
+
+<div>
+    <h4>Company</h4>
+    <a href="#farm">Our Farm</a>
+    <a href="#farmers">Our Farmers</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+</div>
+
+<div>
+    <h4>Customer Care</h4>
+    <a href="#">Delivery Information</a>
+    <a href="#">Return Policy</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+    © 2026 FreshVeggies. Farm Fresh • Freshly Packed • Doorstep Delivery
+</div>
+
+</div>
+</footer>
+
+
+<!-- =====================================================
+     CART
+===================================================== -->
+
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<aside class="cart-panel" id="cartPanel">
+
+<div class="cart-head">
+
+<div>
+    <strong>Your Fresh Basket</strong>
+    <div style="font-size:11px;color:#718078;">
+        Freshly picked for you 🌱
+    </div>
+</div>
+
+<button class="close-btn" onclick="closeCart()">✕</button>
+
+</div>
+
+<div class="cart-items" id="cartItems"></div>
+
+<div class="cart-summary">
+
+<div class="summary-row">
+    <span>Subtotal</span>
+    <strong id="subtotal">₹0</strong>
+</div>
+
+<div class="summary-row">
+    <span>Delivery</span>
+    <strong id="deliveryFee">₹0</strong>
+</div>
+
+<div class="summary-row summary-total">
+    <span>Total</span>
+    <strong id="cartTotal">₹0</strong>
+</div>
+
+<div id="paymentNotice" class="payment-note" style="display:none;">
+    🔒 Orders above ₹500 require online payment before delivery.
+</div>
+
+<button
+    class="btn btn-primary checkout-btn"
+    onclick="openCheckout()">
+    Proceed to Checkout →
+</button>
+
+</div>
+
+</aside>
+
+
+<!-- =====================================================
+     CHECKOUT
+===================================================== -->
+
+<div class="modal" id="checkoutModal">
+
+<div class="modal-card">
+
+<div id="checkoutContent">
+
+<div class="modal-head">
+
+<div>
+    <h2>Complete Your Order</h2>
+    <small style="color:#718078;">
+        Fresh vegetables are just one step away.
+    </small>
+</div>
+
+<button class="close-btn" onclick="closeCheckout()">✕</button>
+
+</div>
+
+
+<div class="form-grid">
+
+<div class="form-group">
+    <label>Full Name *</label>
+    <input id="customerName" placeholder="Your name">
+</div>
+
+<div class="form-group">
+    <label>Mobile Number *</label>
+    <input id="customerPhone"
+           type="tel"
+           placeholder="10 digit mobile number">
+</div>
+
+<div class="form-group full">
+    <label>Delivery Address *</label>
+    <textarea
+        id="customerAddress"
+        placeholder="House / Flat, Street, Area"></textarea>
+</div>
+
+<div class="form-group">
+    <label>City *</label>
+    <input id="customerCity" placeholder="City">
+</div>
+
+<div class="form-group">
+    <label>Pincode *</label>
+    <input id="customerPin" maxlength="6" placeholder="Pincode">
+</div>
+
+<div class="form-group full">
+
+<label>Delivery Preference</label>
+
+<select id="deliverySlot">
+
+<option>Early Morning — 6:00 AM to 9:00 AM</option>
+<option>Morning — 9:00 AM to 12:00 PM</option>
+</select>
+
+</div>
+
+</div>
+
+
+<h3 style="margin:20px 0 10px;">
+    Payment Method
+</h3>
+
+<div class="payment-options">
+
+<label class="payment-option selected" id="onlineOption">
+
+<input
+    type="radio"
+    name="payment"
+    value="online"
+    checked
+    onchange="selectPayment('online')">
+
+<strong> 💳 Online Payment</strong>
+
+<div style="font-size:11px;color:#718078;margin-top:5px;">
+    UPI / Card / Net Banking
+</div>
+
+</label>
+
+
+<label class="payment-option" id="codOption">
+
+<input
+    type="radio"
+    name="payment"
+    value="cod"
+    onchange="selectPayment('cod')">
+
+<strong> 💵 Cash on Delivery</strong>
+
+<div style="font-size:11px;color:#718078;margin-top:5px;">
+    Available below ₹500
+</div>
+
+</label>
+
+</div>
+
+
+<div id="checkoutNotice" class="payment-note">
+    💳 Secure online payment selected.
+</div>
+
+
+<div style="
+display:flex;
+justify-content:space-between;
+font-weight:800;
+font-size:20px;
+margin:20px 0;
+">
+
+<span>Order Total</span>
+
+<span id="checkoutTotal">
+    ₹0
+</span>
+
+</div>
+
+
+<button
+    class="btn btn-primary"
+    style="width:100%;"
+    onclick="placeOrder()">
+
+    Confirm & Place Order
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* =========================================================
+   PRODUCT DATABASE
+========================================================= */
+
+const products = [
+
+{
+ id:1,
+ name:"Fresh Tomato",
+ category:"Fruit",
+ price:40,
+ unit:"kg",
+ emoji:"🍅",
+ badge:"Harvested Today"
+},
+
+{
+ id:2,
+ name:"Potato",
+ category:"Root",
+ price:35,
+ unit:"kg",
+ emoji:"🥔",
+ badge:"Farm Fresh"
+},
+
+{
+ id:3,
+ name:"Carrot",
+ category:"Root",
+ price:60,
+ unit:"kg",
+ emoji:"🥕",
+ badge:"Fresh Pick"
+},
+
+{
+ id:4,
+ name:"Green Chilli",
+ category:"Fruit",
+ price:80,
+ unit:"kg",
+ emoji:"🌶️",
+ badge:"Fresh"
+},
+
+{
+ id:5,
+ name:"Spinach",
+ category:"Leafy",
+ price:30,
+ unit:"bunch",
+ emoji:"🌿",
+ badge:"Today's Harvest"
+},
+
+{
+ id:6,
+ name:"Broccoli",
+ category:"Exotic",
+ price:120,
+ unit:"kg",
+ emoji:"🥦",
+ badge:"Premium"
+},
+
+{
+ id:7,
+ name:"Cabbage",
+ category:"Leafy",
+ price:35,
+ unit:"kg",
+ emoji:"🥬",
+ badge:"Farm Fresh"
+},
+
+{
+ id:8,
+ name:"Cauliflower",
+ category:"Exotic",
+ price:55,
+ unit:"kg",
+ emoji:"🥦",
+ badge:"Fresh"
+},
+
+{
+ id:9,
+ name:"Coriander",
+ category:"Herbs",
+ price:20,
+ unit:"bunch",
+ emoji:"🌿",
+ badge:"Morning Harvest"
+},
+
+{
+ id:10,
+ name:"Beetroot",
+ category:"Root",
+ price:65,
+ unit:"kg",
+ emoji:"🫜",
+ badge:"Farm Pick"
+},
+
+{
+ id:11,
+ name:"Capsicum",
+ category:"Fruit",
+ price:90,
+ unit:"kg",
+ emoji:"🫑",
+ badge:"Fresh"
+},
+
+{
+ id:12,
+ name:"Lady Finger",
+ category:"Fruit",
+ price:70,
+ unit:"kg",
+ emoji:"🥒",
+ badge:"Today's Harvest"
+}
+
+];
+
+
+/* =========================================================
+   CART STATE
+========================================================= */
+
+let cart =
+JSON.parse(localStorage.getItem("freshVeggiesCart")) || [];
+
+let activeCategory="All";
+
+let selectedPayment="online";
+
+
+/* =========================================================
+   SAVE CART
+========================================================= */
+
+function saveCart(){
+
+localStorage.setItem(
+    "freshVeggiesCart",
+    JSON.stringify(cart)
+);
+
+}
+
+
+/* =========================================================
+   RENDER PRODUCTS
+========================================================= */
+
+function renderProducts(){
+
+const grid =
+document.getElementById("productGrid");
+
+const search =
+document.getElementById("searchInput")
+.value
+.toLowerCase();
+
+const sort =
+document.getElementById("sortSelect")
+.value;
+
+
+let list=products.filter(product=>{
+
+const matchesCategory =
+activeCategory==="All" ||
+product.category===activeCategory;
+
+const matchesSearch =
+product.name.toLowerCase()
+.includes(search);
+
+return matchesCategory && matchesSearch;
+
+});
+
+
+if(sort==="low")
+    list.sort((a,b)=>a.price-b.price);
+
+if(sort==="high")
+    list.sort((a,b)=>b.price-a.price);
+
+if(sort==="name")
+    list.sort((a,b)=>a.name.localeCompare(b.name));
+
+
+grid.innerHTML=list.map(product=>`
+
+<article class="product">
+
+<div class="product-image">
+
+<span class="product-badge">
+    ${product.badge}
+</span>
+
+${product.emoji}
+
+</div>
+
+<div class="product-content">
+
+<div class="product-title">
+    ${product.name}
+</div>
+
+<div class="product-meta">
+    Fresh farm produce • ${product.unit}
+</div>
+
+<div class="price-row">
+
+<div class="price">
+    <strong>₹${product.price}</strong>
+    <span>/ ${product.unit}</span>
+</div>
+
+<button
+class="add-btn"
+onclick="addToCart(${product.id})">
++
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+`).join("");
+
+
+if(list.length===0){
+
+grid.innerHTML=`
+<div style="
+grid-column:1/-1;
+text-align:center;
+padding:50px;
+color:#718078;">
+    🥬 No vegetables found.
+</div>
+`;
+
+}
+
+}
+
+
+/* =========================================================
+   CATEGORY FILTER
+========================================================= */
+
+function filterCategory(category,button){
+
+activeCategory=category;
+
+document
+.querySelectorAll(".category")
+.forEach(btn=>btn.classList.remove("active"));
+
+button.classList.add("active");
+
+renderProducts();
+
+}
+
+
+/* =========================================================
+   ADD CART
+========================================================= */
+
+function addToCart(id){
+
+const product =
+products.find(p=>p.id===id);
+
+const existing =
+cart.find(item=>item.id===id);
+
+
+if(existing){
+
+existing.qty++;
+
+}else{
+
+cart.push({
+    id:product.id,
+    qty:1
+});
+
+}
+
+
+saveCart();
+
+updateCart();
+
+showToast(
+`${product.emoji} ${product.name} added to your basket`
+);
+
+}
+
+
+/* =========================================================
+   CART DATA
+========================================================= */
+
+function getCartDetails(){
+
+return cart.map(item=>{
+
+const product =
+products.find(p=>p.id===item.id);
+
+return {
+    ...product,
+    qty:item.qty,
+    total:product.price*item.qty
+};
+
+});
+
+}
+
+
+function getSubtotal(){
+
+return getCartDetails()
+.reduce((sum,item)=>sum+item.total,0);
+
+}
+
+
+function getDeliveryFee(){
+
+const subtotal=getSubtotal();
+
+if(subtotal===0)
+    return 0;
+
+if(subtotal>=500)
+    return 0;
+
+return 30;
+
+}
+
+
+/* =========================================================
+   UPDATE CART
+========================================================= */
+
+function updateCart(){
+
+const details=getCartDetails();
+
+const subtotal=getSubtotal();
+
+const delivery=getDeliveryFee();
+
+const total=subtotal+delivery;
+
+
+document.getElementById("cartCount")
+.textContent=
+cart.reduce((sum,item)=>sum+item.qty,0);
+
+
+document.getElementById("subtotal")
+.textContent=`₹${subtotal}`;
+
+document.getElementById("deliveryFee")
+.textContent=
+delivery===0
+? "FREE"
+: `₹${delivery}`;
+
+document.getElementById("cartTotal")
+.textContent=`₹${total}`;
+
+document.getElementById("checkoutTotal")
+.textContent=`₹${total}`;
+
+
+const notice=
+document.getElementById("paymentNotice");
+
+notice.style.display=
+subtotal>=500
+? "block"
+: "none";
+
+
+const container=
+document.getElementById("cartItems");
+
+
+if(details.length===0){
+
+container.innerHTML=`
+
+<div class="empty-cart">
+
+<div style="font-size:70px;">🧺</div>
+
+<h3>Your basket is empty</h3>
+
+<p style="margin-top:8px;">
+Add some fresh vegetables from today's harvest.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+container.innerHTML=details.map(item=>`
+
+<div class="cart-item">
+
+<div class="cart-item-image">
+    ${item.emoji}
+</div>
+
+<div>
+
+<h4>${item.name}</h4>
+
+<small>
+    ₹${item.price}/${item.unit}
+</small>
+
+<div class="qty">
+
+<button onclick="changeQty(${item.id},-1)">
+−
+</button>
+
+<strong>${item.qty}</strong>
+
+<button onclick="changeQty(${item.id},1)">
++
+</button>
+
+</div>
+
+<button
+class="remove"
+onclick="removeItem(${item.id})">
+Remove
+</button>
+
+</div>
+
+<strong>
+₹${item.total}
+</strong>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =========================================================
+   CHANGE QUANTITY
+========================================================= */
+
+function changeQty(id,change){
+
+const item =
+cart.find(item=>item.id===id);
+
+if(!item)
+    return;
+
+item.qty+=change;
+
+if(item.qty<=0){
+
+cart=
+cart.filter(item=>item.id!==id);
+
+}
+
+saveCart();
+
+updateCart();
+
+}
+
+
+/* =========================================================
+   REMOVE ITEM
+========================================================= */
+
+function removeItem(id){
+
+cart=
+cart.filter(item=>item.id!==id);
+
+saveCart();
+
+updateCart();
+
+showToast("Item removed from basket.");
+
+}
+
+
+/* =========================================================
+   CART UI
+========================================================= */
+
+function openCart(){
+
+document
+.getElementById("cartPanel")
+.classList.add("show");
+
+document
+.getElementById("overlay")
+.classList.add("show");
+
+}
+
+
+function closeCart(){
+
+document
+.getElementById("cartPanel")
+.classList.remove("show");
+
+document
+.getElementById("overlay")
+.classList.remove("show");
+
+}
+
+
+function closeAll(){
+
+closeCart();
+closeCheckout();
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function openCheckout(){
+
+if(cart.length===0){
+
+showToast("Your basket is empty.");
+
+return;
+
+}
+
+closeCart();
+
+document
+.getElementById("checkoutModal")
+.classList.add("show");
+
+updateCart();
+
+}
+
+
+function closeCheckout(){
+
+document
+.getElementById("checkoutModal")
+.classList.remove("show");
+
+}
+
+
+/* =========================================================
+   PAYMENT SELECTION
+========================================================= */
+
+function selectPayment(method){
+
+selectedPayment=method;
+
+const online=
+document.getElementById("onlineOption");
+
+const cod=
+document.getElementById("codOption");
+
+const notice=
+document.getElementById("checkoutNotice");
+
+const subtotal=getSubtotal();
+
+
+if(subtotal>=500 && method==="cod"){
+
+selectedPayment="online";
+
+document.querySelector(
+'input[value="online"]'
+).checked=true;
+
+showToast(
+"Orders above ₹500 require online payment."
+);
+
+method="online";
+
+}
+
+
+online.classList.toggle(
+"selected",
+method==="online"
+);
+
+cod.classList.toggle(
+"selected",
+method==="cod"
+);
+
+
+if(method==="online"){
+
+notice.innerHTML=
+"🔒 Secure payment through UPI, cards or net banking.";
+
+}else{
+
+notice.innerHTML=
+"💵 Cash on delivery selected. Please keep exact amount ready.";
+
+}
+
+}
+
+
+/* =========================================================
+   VALIDATE CHECKOUT
+========================================================= */
+
+function validateCheckout(){
+
+const name=
+document.getElementById("customerName")
+.value.trim();
+
+const phone=
+document.getElementById("customerPhone")
+.value.trim();
+
+const address=
+document.getElementById("customerAddress")
+.value.trim();
+
+const city=
+document.getElementById("customerCity")
+.value.trim();
+
+const pin=
+document.getElementById("customerPin")
+.value.trim();
+
+
+if(name.length<2){
+
+showToast("Please enter your full name.");
+
+return false;
+
+}
+
+if(!/^[6-9]\d{9}$/.test(phone)){
+
+showToast("Enter a valid 10-digit mobile number.");
+
+return false;
+
+}
+
+if(address.length<8){
+
+showToast("Please enter your complete address.");
+
+return false;
+
+}
+
+if(city.length<2){
+
+showToast("Please enter your city.");
+
+return false;
+
+}
+
+if(!/^\d{6}$/.test(pin)){
+
+showToast("Please enter a valid 6-digit pincode.");
+
+return false;
+
+}
+
+return true;
+
+}
+
+
+/* =========================================================
+   PLACE ORDER
+========================================================= */
+
+function placeOrder(){
+
+if(!validateCheckout())
+    return;
+
+
+const subtotal=getSubtotal();
+
+if(subtotal>=500 &&
+selectedPayment==="cod"){
+
+selectPayment("online");
+
+return;
+
+}
+
+
+const orderId=
+"FV"
++Date.now()
+.toString()
+.slice(-8);
+
+
+const customer={
+
+name:
+document.getElementById("customerName").value,
+
+phone:
+document.getElementById("customerPhone").value,
+
+address:
+document.getElementById("customerAddress").value,
+
+city:
+document.getElementById("customerCity").value,
+
+pin:
+document.getElementById("customerPin").value,
+
+slot:
+document.getElementById("deliverySlot").value
+
+};
+
+
+const total=
+getSubtotal()+getDeliveryFee();
+
+
+/*
+    IMPORTANT:
+    For production:
+    - Send order to backend
+    - Create Razorpay order server-side
+    - Verify payment signature server-side
+*/
+
+if(selectedPayment==="online"){
+
+startOnlinePayment(
+orderId,
+customer,
+total
+);
+
+}else{
+
+completeOrder(
+orderId,
+customer,
+total,
+"Cash on Delivery"
+);
+
+}
+
+}
+
+
+/* =========================================================
+   RAZORPAY INTEGRATION PLACEHOLDER
+========================================================= */
+
+function startOnlinePayment(
+orderId,
+customer,
+amount
+){
+
+/*
+=========================================================
+PRODUCTION RAZORPAY FLOW
+
+1. Send customer + cart to your backend.
+
+2. Backend creates Razorpay order using SECRET KEY.
+
+3. Backend returns Razorpay order_id.
+
+4. Frontend opens Razorpay Checkout.
+
+5. Backend verifies:
+   razorpay_payment_id
+   razorpay_order_id
+   razorpay_signature
+
+NEVER put Razorpay Secret Key here.
+
+Example frontend flow:
+
+const options = {
+    key: "YOUR_RAZORPAY_KEY_ID",
+    amount: amount * 100,
+    currency: "INR",
+    order_id: "BACKEND_ORDER_ID",
+    name: "FreshVeggies",
+    description: "Farm Fresh Vegetable Order",
+    handler: function(response){
+        // send response to backend
+        // verify signature
+    }
+};
+
+const rzp = new Razorpay(options);
+rzp.open();
+
+=========================================================
+*/
+
+
+showToast(
+"Online payment gateway is ready for Razorpay backend integration."
+);
+
+
+/*
+Demo behavior.
+Replace this section with actual Razorpay Checkout
+after backend integration.
+*/
+
+setTimeout(()=>{
+
+completeOrder(
+orderId,
+customer,
+amount,
+"Online Payment"
+);
+
+},1200);
+
+}
+
+
+/* =========================================================
+   COMPLETE ORDER
+========================================================= */
+
+function completeOrder(
+orderId,
+customer,
+amount,
+paymentMethod
+){
+
+cart=[];
+
+saveCart();
+
+updateCart();
+
+document.getElementById("checkoutContent")
+.innerHTML=`
+
+<div class="success">
+
+<div class="success-icon">
+    ✓
+</div>
+
+<h2>Order Confirmed!</h2>
+
+<p style="
+color:#718078;
+line-height:1.7;
+margin:15px 0 25px;">
+
+Thank you, <strong>
+${escapeHTML(customer.name)}
+</strong>.
+
+Your fresh vegetable order has been received.
+
+</p>
+
+<div style="
+background:#EFF8E8;
+padding:20px;
+border-radius:18px;
+text-align:left;">
+
+<div class="summary-row">
+    <span>Order ID</span>
+    <strong>${orderId}</strong>
+</div>
+
+<div class="summary-row">
+    <span>Total</span>
+    <strong>₹${amount}</strong>
+</div>
+
+<div class="summary-row">
+    <span>Payment</span>
+    <strong>${paymentMethod}</strong>
+</div>
+
+<div class="summary-row">
+    <span>Delivery</span>
+    <strong>${customer.slot}</strong>
+</div>
+
+</div>
+
+<p style="
+font-size:13px;
+color:#718078;
+margin:20px 0;">
+
+🌱 Your vegetables will be prepared fresh
+for delivery.
+
+</p>
+
+<button
+class="btn btn-primary"
+style="width:100%;"
+onclick="location.reload()">
+
+Continue Shopping
+
+</button>
+
+</div>
+
+`;
+
+showToast("Order placed successfully! 🌱");
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value){
+
+return value
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMenu(){
+
+document
+.getElementById("navLinks")
+.classList.toggle("show");
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+const toast=
+document.getElementById("toast");
+
+toast.textContent=message;
+
+toast.classList.add("show");
+
+clearTimeout(toastTimer);
+
+toastTimer=setTimeout(()=>{
+
+toast.classList.remove("show");
+
+},2800);
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer=
+new IntersectionObserver(
+entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("visible");
+
+}
+
+});
+
+},
+{
+threshold:.12
+}
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(el=>observer.observe(el));
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+renderProducts();
+
+updateCart();
+
+</script>
+
+</body>
+</html>
